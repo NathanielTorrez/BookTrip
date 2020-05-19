@@ -1,0 +1,133 @@
+DROP DATABASE IF EXISTS air_bnb;
+
+CREATE DATABASE air_bnb;
+
+\c air_bnb;
+
+CREATE TABLE homes (
+  houseID SERIAL PRIMARY KEY,
+  price INT,
+  rating REAL,
+  reviews INT,
+  guest_limit INT,
+  cleaning_fee INT,
+  service_fee INT,
+  tax INT
+);
+
+-- CREATE TABLE reservations (
+--   ID PRIMARY KEY,
+--   houseID REFERENCES homes(houseID),
+--   start_day DATE,
+--   end_day Date
+-- );
+
+
+     -- home,price,rating,reviews,guest,clean,serv,tax
+INSERT INTO homes VALUES (1, 10, 1.1, 1, 3, 1, 1, 1);
+INSERT INTO homes VALUES (2, 20, 2.2, 2, 4, 2, 2, 2);
+INSERT INTO homes VALUES (3, 30, 3.3, 3, 5, 3, 3, 3);
+INSERT INTO homes VALUES (4, 40, 4.4, 4, 4, 4, 4, 4);
+INSERT INTO homes VALUES (5, 50, 5, 5, 5, 5, 5, 5);
+INSERT INTO homes VALUES (6, 60, 1, 6, 1, 6, 6, 6);
+INSERT INTO homes VALUES (7, 70, 2, 7, 2, 7, 7, 7);
+INSERT INTO homes VALUES (8, 80, 3, 8, 3, 8, 8, 8);
+INSERT INTO homes VALUES (9, 90, 4, 9, 4, 9, 9, 9);
+INSERT INTO homes VALUES (10, 100, 1, 10, 10, 10, 10, 1);
+INSERT INTO homes VALUES (11, 110, 2, 11, 11, 11, 11, 2);
+INSERT INTO homes VALUES (12, 120, 3, 12, 12, 12, 12, 3);
+INSERT INTO homes VALUES (13, 130, 4, 13, 13, 13, 13, 4);
+INSERT INTO homes VALUES (14, 140, 5, 14, 14, 14, 14, 5);
+INSERT INTO homes VALUES (15, 150, 1, 15, 3, 15, 15, 6);
+INSERT INTO homes VALUES (16, 160, 2, 16, 4, 16, 16, 7);
+INSERT INTO homes VALUES (17, 170, 3, 17, 5, 17, 17, 8);
+INSERT INTO homes VALUES (18, 180, 4, 18, 6, 18, 18, 9);
+INSERT INTO homes VALUES (19, 190, 5, 19, 7, 19, 19, 1);
+INSERT INTO homes VALUES (20, 200, 1, 10, 8, 10, 10, 2);
+INSERT INTO homes VALUES (21, 210, 2, 11, 9, 11, 11, 3);
+INSERT INTO homes VALUES (22, 220, 3, 12, 10, 12, 12, 4);
+INSERT INTO homes VALUES (23, 230, 4, 13, 11, 13, 13, 5);
+INSERT INTO homes VALUES (24, 240, 5, 14, 12, 14, 14, 6);
+INSERT INTO homes VALUES (25, 250, 1, 15, 13, 15, 15, 7);
+INSERT INTO homes VALUES (26, 260, 2, 16, 14, 16, 16, 8);
+INSERT INTO homes VALUES (27, 270, 3, 17, 3, 17, 17, 9);
+INSERT INTO homes VALUES (28, 280, 4, 18, 4, 18, 18, 1);
+INSERT INTO homes VALUES (29, 290, 5, 19, 5, 19, 19, 2);
+INSERT INTO homes VALUES (30, 300, 1, 10, 6, 10, 10, 3);
+INSERT INTO homes VALUES (31, 310, 2, 11, 7, 11, 11, 4);
+INSERT INTO homes VALUES (32, 320, 3, 12, 12, 12, 12, 5);
+INSERT INTO homes VALUES (33, 330, 4, 13, 13, 13, 13, 6);
+INSERT INTO homes VALUES (34, 340, 5, 14, 14, 14, 14, 7);
+INSERT INTO homes VALUES (35, 350, 1, 15, 15, 15, 15, 8);
+INSERT INTO homes VALUES (36, 360, 2, 16, 3, 16, 16, 9);
+INSERT INTO homes VALUES (37, 370, 3, 17, 4, 17, 17, 1);
+INSERT INTO homes VALUES (38, 380, 4, 18, 8, 18, 18, 2);
+INSERT INTO homes VALUES (39, 390, 5, 19, 9, 19, 19, 3);
+INSERT INTO homes VALUES (40, 400, 1, 10, 10, 10, 10, 4);
+INSERT INTO homes VALUES (41, 410, 2, 11, 11, 11, 11, 5);
+INSERT INTO homes VALUES (42, 420, 3, 12, 12, 12, 12, 6);
+INSERT INTO homes VALUES (43, 430, 4, 13, 13, 13, 13, 7);
+INSERT INTO homes VALUES (44, 440, 5, 14, 14, 14, 14, 8);
+INSERT INTO homes VALUES (45, 450, 1, 15, 5, 15, 15, 9);
+INSERT INTO homes VALUES (46, 460, 2, 16, 6, 16, 16, 1);
+INSERT INTO homes VALUES (47, 470, 3, 17, 7, 17, 17, 2);
+INSERT INTO homes VALUES (48, 480, 4, 18, 8, 18, 18, 3);
+INSERT INTO homes VALUES (49, 490, 5, 19, 9, 19, 19, 4);
+INSERT INTO homes VALUES (50, 500, 1, 10, 10, 10, 10, 5);
+INSERT INTO homes VALUES (51, 510, 2, 11, 3, 11, 11, 6);
+INSERT INTO homes VALUES (52, 520, 3, 12, 4, 12, 12, 7);
+INSERT INTO homes VALUES (53, 530, 4, 13, 3, 13, 13, 8);
+INSERT INTO homes VALUES (54, 540, 5, 14, 4, 14, 14, 9);
+INSERT INTO homes VALUES (55, 550, 1, 15, 5, 15, 15, 1);
+INSERT INTO homes VALUES (56, 560, 2, 16, 6, 16, 16, 2);
+INSERT INTO homes VALUES (57, 570, 3, 17, 7, 17, 17, 3);
+INSERT INTO homes VALUES (58, 580, 4, 18, 8, 18, 18, 4);
+INSERT INTO homes VALUES (59, 590, 5, 19, 9, 19, 19, 5);
+INSERT INTO homes VALUES (60, 600, 1, 10, 10, 10, 10, 6);
+INSERT INTO homes VALUES (61, 610, 2, 11, 11, 11, 11, 7);
+INSERT INTO homes VALUES (62, 620, 3, 12, 12, 12, 12, 8);
+INSERT INTO homes VALUES (63, 630, 4, 13, 13, 13, 13, 9);
+INSERT INTO homes VALUES (64, 640, 5, 14, 4, 14, 14, 1);
+INSERT INTO homes VALUES (65, 650, 1, 15, 5, 15, 15, 2);
+INSERT INTO homes VALUES (66, 660, 2, 16, 6, 16, 16, 3);
+INSERT INTO homes VALUES (67, 670, 3, 17, 7, 17, 17, 4);
+INSERT INTO homes VALUES (68, 680, 4, 18, 8, 18, 18, 5);
+INSERT INTO homes VALUES (69, 690, 5, 19, 9, 19, 19, 6);
+INSERT INTO homes VALUES (70, 700, 1, 10, 10, 10, 10, 7);
+INSERT INTO homes VALUES (71, 710, 2, 11, 11, 11, 11, 8);
+INSERT INTO homes VALUES (72, 720, 3, 12, 12, 12, 12, 9);
+INSERT INTO homes VALUES (73, 730, 4, 13, 13, 13, 13, 1);
+INSERT INTO homes VALUES (74, 740, 5, 14, 4, 14, 14, 2);
+INSERT INTO homes VALUES (75, 750, 1, 15, 5, 15, 15, 3);
+INSERT INTO homes VALUES (76, 760, 2, 16, 6, 16, 16, 4);
+INSERT INTO homes VALUES (77, 770, 3, 17, 7, 17, 17, 5);
+INSERT INTO homes VALUES (78, 780, 4, 18, 8, 18, 18, 6);
+INSERT INTO homes VALUES (79, 790, 5, 19, 9, 19, 19, 7);
+INSERT INTO homes VALUES (80, 800, 1, 10, 10, 10, 10, 8);
+INSERT INTO homes VALUES (81, 810, 2, 11, 11, 11, 11, 9);
+INSERT INTO homes VALUES (82, 820, 3, 12, 12, 12, 12, 1);
+INSERT INTO homes VALUES (83, 830, 4, 13, 13, 13, 13, 2);
+INSERT INTO homes VALUES (84, 840, 5, 14, 4, 14, 14, 3);
+INSERT INTO homes VALUES (85, 850, 1, 15, 5, 15, 15, 4);
+INSERT INTO homes VALUES (86, 860, 2, 16, 6, 16, 16, 5);
+INSERT INTO homes VALUES (87, 870, 3, 17, 7, 17, 17, 6);
+INSERT INTO homes VALUES (88, 880, 4, 18, 8, 18, 18, 7);
+INSERT INTO homes VALUES (89, 890, 5, 19, 9, 19, 19, 8);
+INSERT INTO homes VALUES (90, 900, 1, 10, 10, 10, 10, 9);
+INSERT INTO homes VALUES (91, 910, 2, 11, 11, 11, 11, 1);
+INSERT INTO homes VALUES (92, 920, 3, 12, 12, 12, 12, 2);
+INSERT INTO homes VALUES (93, 930, 4, 13, 13, 13, 13, 3);
+INSERT INTO homes VALUES (94, 940, 5, 14, 4, 14, 14, 4);
+INSERT INTO homes VALUES (95, 950, 1, 15, 5, 15, 15, 5);
+INSERT INTO homes VALUES (96, 960, 2, 16, 6, 16, 16, 6);
+INSERT INTO homes VALUES (97, 970, 3, 17, 7, 17, 17, 7);
+INSERT INTO homes VALUES (98, 980, 4, 18, 8, 18, 18, 8);
+INSERT INTO homes VALUES (99, 990, 5, 19, 9, 19, 19, 9);
+INSERT INTO homes VALUES (100, 1000, 1, 10, 10, 10, 10, 1);
+
+-- --ID,houseID,Start,End
+-- -- INSERT INTO reservations
+
+-- INSERT INTO reservations VALUES (1, 1, 5/17/2020, 5/19/2020);
+-- INSERT INTO reservations VALUES (2, 1, 6/05/2020, 6/10/2020);
+-- INSERT INTO reservations VALUES (3, 1, 7/21/2020, 7/30/2020);
