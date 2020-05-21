@@ -56,6 +56,9 @@
 
 **Success Status Code:** `201`
 
+**Path Parameters:**
+  * `id` property id
+
 **Request Body**: Expects JSON with the following keys.
 
 ```json
