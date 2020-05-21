@@ -49,6 +49,8 @@ class App extends React.Component {
   getData() {
     const that = this;
     const stay = that.state.fees.days;
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const myParam = urlParams.get('id');
     axios.get('/data')
       .then(({ data }) => {
         const res = data[4];

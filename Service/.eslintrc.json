@@ -1,4 +1,0 @@
-{
-  "extends": "airbnb",
-  "ignorePatterns": ["bundle.js", "node_modules"]
-}

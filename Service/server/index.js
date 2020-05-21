@@ -16,9 +16,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/', expressStaticGzip(`${__dirname}/../client/dist`));
+
 app.get('/data', (req, res) => {
   const queryStr = 'SELECT * FROM homes';
-
+  console.log('made it to get')
   db.query(queryStr, (err, result) => {
     if (err) {
       res.send(`ERROR, ${err}`);
@@ -27,6 +28,56 @@ app.get('/data', (req, res) => {
     }
   });
 });
+
+app.put('/put', (req, res) => {
+  const { id } = req.query;
+  const { value } = req.body;
+  const { column } = req.body;
+
+  db.query(`UPDATE homes SET ${column} = ${value} WHERE houseID=${id}`, (err, result) => {
+     if (err) {
+       res.status(400);
+       res.send();
+     } else {
+      res.status(204);
+      res.send(result);
+     }
+   });
+});
+
+app.post('/post', (req, res) => {
+  const { tax } = req.body;
+  const { price } = req.body;
+  const { rating } = req.body;
+  const { reviews } = req.body;
+  const { guestLimit } = req.body;
+  const { serviceFee } = req.body;
+  const { cleaningFee } = req.body;
+
+  db.query(`INSERT INTO homes( price, rating, reviews, guest_limit, cleaning_fee, service_fee, tax )
+  VALUES(${price}, ${rating}, ${reviews}, ${guestLimit}, ${cleaningFee}, ${serviceFee}, ${tax})`, (err, results) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(400)
+    } else {
+      res.send(200)
+      res.end()
+    }
+  });
+})
+
+app.delete('/delete', (req, res) => {
+  const { houseID } = req.body;
+
+  db.query(`DELETE FROM homes WHERE houseID=${houseID}` ,(err, result) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(404)
+    } else {
+      res.sendStatus(200)
+    }
+  })
+})
 
 
 app.listen(3002, () => {
