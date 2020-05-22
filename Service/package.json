@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint",
-    "seed": "psql -U postgres < schema.sql",
+    "postgresSchema": "psql -U postgres < postgres/mySchema.sql",
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
     "server-dev": "nodemon server/index.js",
@@ -24,6 +24,7 @@
     "bootstrap": "^4.4.1",
     "circleci": "^0.3.3",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "moment": "^2.25.3",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15",
