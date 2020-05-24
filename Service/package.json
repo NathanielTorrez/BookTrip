@@ -9,6 +9,8 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint",
+    "seedPostgres": "node --max-old-space-size=12000 postgres/seed.js",
+    "seedMongo": "node --max-old-space-size=12000 mongo/seed.js",
     "postgresSchema": "psql -U postgres < postgres/mySchema.sql",
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
@@ -25,6 +27,7 @@
     "circleci": "^0.3.3",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "graceful-fs": "^4.2.4",
     "moment": "^2.25.3",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.15",

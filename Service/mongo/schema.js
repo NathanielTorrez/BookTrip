@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const faker = require('faker');
 
 mongoose.connect('mongodb://127.0.0.1:27017/booking', {useNewUrlParser: true});
 
@@ -24,3 +25,12 @@ var reservations = new mongoose.Schema({
   checkin: Date,
   checkout: Date
 })
+
+var reservationModel = mongoose.model('reservationModel', reservations)
+
+var homeModel = mongoose.model('homeModel', homes)
+
+module.exports = {
+  reservationModel: reservationModel,
+  homeModel: homeModel
+}

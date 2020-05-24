@@ -4,7 +4,7 @@ CREATE DATABASE booking;
 
 \c booking;
 
-CREATE TABLE pricing (
+CREATE TABLE homes (
   id SERIAL PRIMARY KEY,
   price SMALLINT,
   rating REAL,
@@ -21,15 +21,9 @@ CREATE TABLE reservations (
   checkout date
 );
 
-CREATE TABLE homes (
-  homeid serial PRIMARY KEY
-);
-
 ALTER TABLE reservations
-ADD COLUMN  homeid INT REFERENCES homes(homeid);
+ADD COLUMN  homeid INT REFERENCES homes(id);
 
-ALTER TABLE homes
-ADD COLUMN reservations INT REFERENCES reservations(id),
-ADD COLUMN pricing INT REFERENCES pricing(id);
+ALTER TABLE homes DISABLE TRIGGER ALL;
 
-
+ALTER TABLE reservations DISABLE TRIGGER ALL;

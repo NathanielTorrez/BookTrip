@@ -24,3 +24,6 @@ coverage
 build/
 # bundle.js
 
+reservations.txt
+reservations2.txt
+homes.txt
