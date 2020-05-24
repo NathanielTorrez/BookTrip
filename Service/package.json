@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint",
     "seedPostgres": "node --max-old-space-size=12000 postgres/seed.js",
-    "seedMongo": "node --max-old-space-size=12000 mongo/seed.js",
+    "seedMongo": "  node  --max-old-space-size=12000 mongo/seed.js",
     "postgresSchema": "psql -U postgres < postgres/mySchema.sql",
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",

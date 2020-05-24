@@ -87,7 +87,7 @@ const seedReservations = () => {
       console.log(count)
       setTimeout(seedReservations, 900);
     } else {
-      seedHomes
+      seedHomes()
       count++
       return
   }
