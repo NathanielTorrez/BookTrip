@@ -11,6 +11,7 @@ db.once('open', function() {
 });
 
   var homes = new mongoose.Schema({
+    _id: Number,
     price: Number,
     rating: Number,
     reviews: Number,
