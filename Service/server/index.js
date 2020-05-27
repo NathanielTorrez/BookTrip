@@ -18,11 +18,12 @@ app.use((req, res, next) => {
 
 app.use('/', expressStaticGzip(`${__dirname}/../client/dist`));
 
-app.get('/data', (req, res) => {
-  const queryStr = 'SELECT * FROM homes';
-  console.log('made it to get')
+app.get('/properties', (req, res) => {
+  const id = req.query.id;
+  const queryStr = `SELECT * FROM homes WHERE id=${id};`;
   db.query(queryStr, (err, result) => {
     if (err) {
+      console.log(err)
       res.send(`ERROR, ${err}`);
     } else {
       res.send(result.rows);
@@ -30,12 +31,12 @@ app.get('/data', (req, res) => {
   });
 });
 
-app.put('/put', (req, res) => {
-  const { id } = req.query;
+app.put('/properties', (req, res) => {
+  const { id } = req.query.id;
   const { value } = req.body;
   const { column } = req.body;
 
-  db.query(`UPDATE homes SET ${column} = ${value} WHERE houseID=${id}`, (err, result) => {
+  db.query(`UPDATE homes SET ${column} = ${value} WHERE id=${id}`, (err, result) => {
      if (err) {
        res.status(400);
        res.send();
@@ -46,8 +47,10 @@ app.put('/put', (req, res) => {
    });
 });
 
-app.post('/post', (req, res) => {
+app.post('/properties', (req, res) => {
+  console.log(req.body)
   const { tax } = req.body;
+  console.log(tax)
   const { price } = req.body;
   const { rating } = req.body;
   const { reviews } = req.body;
@@ -67,10 +70,41 @@ app.post('/post', (req, res) => {
   });
 })
 
-app.delete('/delete', (req, res) => {
-  const { houseID } = req.body;
+app.post('/properties/reservations', (req, res) => {
+  console.log(req.body)
+  const { checkin } = req.body;
+  const { checkout } = req.body;
 
-  db.query(`DELETE FROM homes WHERE houseID=${houseID}` ,(err, result) => {
+
+  db.query(`INSERT INTO reservations(checkin, checkout)
+  VALUES(${checkin}, ${checkout})`, (err, results) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(400)
+    } else {
+      res.send(200)
+      res.end()
+    }
+  });
+})
+
+app.delete('/properties', (req, res) => {
+  const { id } = req.query.id;
+
+  db.query(`DELETE FROM homes WHERE id=${id}` ,(err, result) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(404)
+    } else {
+      res.sendStatus(200)
+    }
+  })
+})
+
+app.delete('/properties/reservations', (req, res) => {
+  const { id } = req.query.id;
+
+  db.query(`DELETE FROM reservations WHERE id=${id}` ,(err, result) => {
     if (err) {
       console.log(err)
       res.sendStatus(404)
