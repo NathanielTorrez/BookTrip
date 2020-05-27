@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 const expressStaticGzip = require('express-static-gzip');
+const newrelic = require('newrelic')
 
 
 const app = express();
