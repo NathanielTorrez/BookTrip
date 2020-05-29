@@ -6,15 +6,16 @@ const client = new Client({
   port: 5432,
   user: 'postgres',
   password: 'postgres',
-  database: 'air_bnb',
+  database: 'booking',
 });
-// 'postgres:postgres:@localhost:5432/air_bnb'
+
+//'postgres:postgres:@localhost:5432/air_bnb'
 
 client.connect((err) => {
   if (err) {
     console.log('ERROR postgres', err);
   } else {
-    console.log('Connected successfuly to postgres air_bnb');
+    console.log('Connected successfuly to postgres booking');
   }
 });
 
