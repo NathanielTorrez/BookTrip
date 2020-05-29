@@ -8,7 +8,8 @@ const client = new Client({
   password: 'postgres',
   database: 'booking',
 });
-// 'postgres:postgres:@localhost:5432/air_bnb'
+
+//'postgres:postgres:@localhost:5432/air_bnb'
 
 client.connect((err) => {
   if (err) {

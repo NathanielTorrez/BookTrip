@@ -1,8 +1,22 @@
-const newrelic = require('newrelic');
+const os = require("os");
+const cluster = require("cluster");
+
+if (cluster.isMaster) {
+  const n_cpus = os.cpus().length;
+  console.log(`forking ${n_cpus} CPU'S`)
+  for (let i =0 ; i < n_cpus; i++) {
+    cluster.fork()
+  }
+
+} else {
+  const newrelic = require('newrelic')
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 const expressStaticGzip = require('express-static-gzip');
+
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,11 +31,13 @@ app.use((req, res, next) => {
 app.use('/', expressStaticGzip(`${__dirname}/../client/dist`));
 
 app.get('/properties', (req, res) => {
-  const id = req.query.id;
+  // const id = req.query.id;
+  //static id used for testing purposes
+  const id = Math.floor(Math.random() * 1000)
   const queryStr = `SELECT * FROM homes WHERE id=${id};`;
   db.query(queryStr, (err, result) => {
     if (err) {
-      console.log(err);
+      console.log(err)
       res.send(`ERROR, ${err}`);
     } else {
       res.send(result.rows);
@@ -117,3 +133,6 @@ app.listen(3002, () => {
   // eslint-disable-next-line no-console
   console.log('Server listening on port 3002....');
 });
+}
+
+
