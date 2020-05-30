@@ -1,23 +1,26 @@
 /* eslint-disable no-console */
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client({
+const pool = new Pool({
   host: 'localhost',
   port: 5432,
   user: 'postgres',
   password: 'postgres',
   database: 'booking',
+  max: 20,
+  connectionTimeoutMillis: 0,
+  idleTimeoutMillis: 0
 });
 
 //'postgres:postgres:@localhost:5432/air_bnb'
 
-client.connect((err) => {
+pool.connect((err, client, done) => {
   if (err) {
     console.log('ERROR postgres', err);
   } else {
-    console.log('Connected successfuly to postgres booking');
+    console.log('Pool successfuly connected to postgres booking');
   }
 });
 
 
-module.exports = client;
+module.exports = pool;
