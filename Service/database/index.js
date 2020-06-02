@@ -21,6 +21,6 @@ pool.connect((err, client, done) => {
     console.log('Pool successfuly connected to postgres booking');
   }
 });
-
-
+// postgres=# copy reservations(checkin, checkout, homeid) from '/Users/nathanieltorrez/Documents/sdc/sdc-project/Nate-Booking/Service/reservations2.txt' DELIMITER ',';
+// sudo scp -i postgres.pem ./sdc/sdc-project/Nate-Booking/Service/reservations.txt.metadata.json ec2-user@ec2-54-177-210-87.us-west-1.compute.amazonaws.com/postgres
 module.exports = pool;
