@@ -6,18 +6,17 @@
 
 # DB Speed Comparison - PostgreSQL vs MongoDB
 >
-> ![data metric](https://imgur.com/FQt51Sq)
-< img src="https://imgur.com/eqEF05T"></img>
+> ![data metric](https://i.imgur.com/FQt51Sq.png)
 
 # Baseline metrics for service
 > Began receiving errors when over 600 rps, time in node also was also quite high
 > (This metric is after optimzing PostgreSQL)
 >
-> ![baseline data](https://imgur.com/K1TSa3L)
+> ![baseline data](https://i.imgur.com/K1TSa3L.png?1)
 
 # Metrics after optimizations
 > Increase in overall performance
 > Decrease in response time
 > 2050 rps with 900ms response time
 >
-> ![optimzied data](https://imgur.com/eqEF05T)
+> ![optimzied data](https://i.imgur.com/eqEF05T.png)
